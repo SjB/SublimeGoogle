@@ -18,11 +18,14 @@ class GoogleSearchSelectionCommand(sublime_plugin.WindowCommand):
 		Search text in google and place results in self.results, then show in quick panel
 		"""
 		sublime.status_message("Searching \""+text+"\" in google.")
+		if text[0] == '!':
+			webbrowser.open("http://www.duckduckgoog.com/?q=" + text)
+			return 0	
 		res = search.GoogleSearch(text)
 		res.results_per_page=10
 		self.results.append(["Open in browser", "http://google.com/search?q="+text])
 		for x in res.get_results():
-			self.results.append([x.title+": "+x.url, x.desc])
+			self.results.append([x.title+": "+x.desc, x.url])
 		sublime.status_message("Found "+str(res.num_results)+" results.")
 		self.window.show_quick_panel(self.results, self.onResSelected)
 		return 0
