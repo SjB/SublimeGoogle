@@ -1,14 +1,22 @@
 [
-	{ 
-		"keys": ["ctrl+shift+g"], 
-		"command": "google_search_input",
+	{
+		"keys": ["ctrl+shift+g", "ctrl+g"],
+		"command": "google_search_selection",
 		"context":
 		[
 			{"key": "selection_empty", "operator": "equal", "operand": true, "match_all": true}
 		]
 	},
-	{ 
-		"keys": ["ctrl+shift+g"], 
+	{
+		"keys": ["ctrl+shift+g", "ctrl+m"],
+		"command": "google_search_selection",
+		"args":
+        {
+            "category" : "msdn"
+        }
+	},
+	{
+		"keys": ["ctrl+shift+g", "ctrl+g"],
 		"command": "google_search_selection",
 		"context":
 		[
